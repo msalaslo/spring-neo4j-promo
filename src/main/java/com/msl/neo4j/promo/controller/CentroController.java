@@ -15,36 +15,36 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.msl.neo4j.promo.entity.Marca;
+import com.msl.neo4j.promo.entity.Centro;
 import com.msl.neo4j.promo.entity.Promocion;
-import com.msl.neo4j.promo.service.MarcaService;
+import com.msl.neo4j.promo.service.CentroService;
 
 
 @RestController
-@RequestMapping("/marca")
-public class MarcaController {
+@RequestMapping("/centro")
+public class CentroController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(MarcaController.class.getName());
+	private static final Logger logger = LoggerFactory.getLogger(CentroController.class.getName());
 	
 	@Autowired
-	MarcaService service;
+	CentroService service;
 	
 	@GetMapping(path = "/findByid")
-    public Optional<Marca> findByid(@RequestParam(value="id", required=false, defaultValue="0") Long id, Model model) {
-        logger.debug("Buscando marca por id...");
+    public Optional<Centro> findByid(@RequestParam(value="id", required=false, defaultValue="0") Long id, Model model) {
+        logger.debug("Buscando centro por id...");
         return service.findByid(id);
     }
 	
 	@GetMapping(path = "/findByName")
-    public Iterable<Marca> findByName(@RequestParam(value="name", required=false, defaultValue="0") String name, Model model) {
-        logger.debug("Buscando marca por name...");
+    public Iterable<Centro> findByName(@RequestParam(value="name", required=false, defaultValue="0") String name, Model model) {
+        logger.debug("Buscando centro por name...");
         return service.findByName(name);
     }
 	
-	@GetMapping(path = "/findByCmarmuma")
-    public Iterable<Marca> findByCmarmuma(@RequestParam(value="cmarmuma", required=false, defaultValue="0") String cmarmuma, Model model) {
-        logger.debug("Buscando marca por cmarmuma...");
-        return service.findByCmarmuma(cmarmuma);
+	@GetMapping(path = "/findByCentroo")
+    public Iterable<Centro> findByCentroo(@RequestParam(value="centroo", required=false, defaultValue="0") String centroo, Model model) {
+        logger.debug("Buscando centro por centroo...");
+        return service.findByCentroo(centroo);
     }
 	
 	@GetMapping(path = "/findPromocionesById")
@@ -53,15 +53,15 @@ public class MarcaController {
         return service.findPromocionesById(id);
     }	
 	
-	@GetMapping(path = "/findPromocionesByCmarmuma")
-    public Iterable<Promocion> findPromocionesByCmarmuma(@RequestParam(value="cmarmuma", required=false, defaultValue="0") String cmarmuma, Model model) {
-        logger.debug("Buscando promociones por cmarmuma...");
-        return service.findPromocionesByCmarmuma(cmarmuma);
+	@GetMapping(path = "/findPromocionesByCentroo")
+    public Iterable<Promocion> findPromocionesByCentroo(@RequestParam(value="centroo", required=false, defaultValue="0") String centroo, Model model) {
+        logger.debug("Buscando promociones por centroo...");
+        return service.findPromocionesByCentroo(centroo);
     }	
 		
     @PostMapping(path = "/save")
-    public ResponseEntity<Marca> save(@RequestBody Marca marca) {
-    	Marca savedProduct = this.service.save(marca);
+    public ResponseEntity<Centro> save(@RequestBody Centro centro) {
+    	Centro savedProduct = this.service.save(centro);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 }

@@ -56,14 +56,11 @@ public class DBLoaderCLRunner implements CommandLineRunner {
 	@Autowired
 	MarcaPromocionRelationsLoader marcaPromocionLoader;
 	
-
-
-	
 	@Override
 	public void run(final String... args) throws Exception {
 		IRepositoryLoader[] loaders = {empresaLoader, centroLoader, familiaLoader, marcaLoader, productoLoader, promocionLoader};
-		IPromocionableRepositoryLoader[] promocionLoaders = {empresaPromocionLoader, centroPromocionLoader, familiaPromocionLoader, marcaPromocionLoader, productoPromocionLoader};
-		IRelacionableRepositoryLoader[] relacionableLoaders = {centroEmpresaLoader, productoCentroLoader, productoMarcaLoader};
+		IRelacionableRepositoryLoader[] relacionableLoaders = {centroEmpresaLoader, productoCentroLoader, productoMarcaLoader, productoFamiliaLoader};
+		IPromocionableRepositoryLoader[] promocionLoaders = {empresaPromocionLoader, centroPromocionLoader, marcaPromocionLoader, familiaPromocionLoader, productoPromocionLoader};
 		deleteRepositories(loaders);
 		deletePromociones(promocionLoaders);
 		deleteRelaciones(relacionableLoaders);

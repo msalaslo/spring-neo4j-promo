@@ -33,7 +33,7 @@ public class PromocionLoader implements IRepositoryLoader{
 	
 	public static void printAllPromosByCodpromoci(PromocionRepository repository) {
 		System.out.println("## Return all promociones sorted by name");
-		Iterable<Promocion> allSorted = repository.findAll(new Sort(new Sort.Order(Sort.Direction.ASC, "codpromoci")));
+		Iterable<Promocion> allSorted = repository.findAll(Sort.by(Sort.Direction.ASC, "codpromoci"));
 		allSorted.forEach(System.out::println);
 	}
 

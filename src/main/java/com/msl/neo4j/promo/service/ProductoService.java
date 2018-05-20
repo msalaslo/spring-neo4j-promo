@@ -19,15 +19,19 @@ public class ProductoService {
 	@Autowired
 	ProductoLoader loader;
 	
-    public Optional<Producto> findByid(String id){
-    	return repository.findById(new Long(id));
+    public Optional<Producto> findByid(Long id){
+    	return repository.findById(id);
     }
     
     public Iterable<Producto> findByReferencia(String referencia){
     	return repository.findByReferencia(referencia);
     }
     
-    public Iterable<Promocion> findPromocionesById(String id){
+    public Producto findByName(String name){
+    	return repository.findByName(name);
+    }
+    
+    public Iterable<Promocion> findPromocionesById(Long id){
     	return repository.findPromocionesById(id);
     }
     
@@ -45,4 +49,16 @@ public class ProductoService {
 	public void add(int numProductos) {
 		loader.add(numProductos);
 	}
+	
+	public Iterable<Promocion> findAllPromocionesById(Long id){
+		return repository.findAllPromocionesById(id);
+	}
+	
+//	public Iterable<Producto> findAllAsStream(){
+//		List<Producto> mapstream = Collections.emptyList();
+//		try (Stream<Producto> stream = repository.findAllAsStream()) {
+//			mapstream = stream.collect(Collectors.toList());
+//		}
+//		return mapstream;
+//	}
 }

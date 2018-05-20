@@ -12,7 +12,7 @@ public class PromocionService {
 	@Autowired
 	PromocionRepository repository;
 	
-//    public Promocion findByid(String id){
+//    public Promocion findByid(Long id){
 //    	return repository.findOne(id);
 //    }
     

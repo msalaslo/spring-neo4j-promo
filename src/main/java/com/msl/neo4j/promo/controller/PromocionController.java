@@ -27,7 +27,7 @@ public class PromocionController {
 	PromocionService service;
 	
 //	@GetMapping(path = "/findByid")
-//    public Promocion findByid(@RequestParam(value="id", required=false, defaultValue="0") String id, Model model) {
+//    public Promocion findByid(@RequestParam(value="id", required=false, defaultValue="0") Long id, Model model) {
 //        logger.debug("Buscando promocion por id...");
 //        return service.findByid(id);
 //    }

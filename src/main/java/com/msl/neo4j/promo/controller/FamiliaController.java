@@ -1,5 +1,7 @@
 package com.msl.neo4j.promo.controller;
 
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +24,34 @@ import com.msl.neo4j.promo.service.FamiliaService;
 @RequestMapping("/familia")
 public class FamiliaController {
 	
-	Logger logger = LoggerFactory.getLogger(FamiliaController.class.getName());
+	private static final Logger logger = LoggerFactory.getLogger(FamiliaController.class.getName());
 	
 	@Autowired
 	FamiliaService service;
 	
+	@GetMapping(path = "/findByid")
+    public Optional<Familia> findByid(@RequestParam(value="id", required=false, defaultValue="0") Long id, Model model) {
+        logger.debug("Buscando familia por id...");
+        return service.findByid(id);
+    }
+	
 	@GetMapping(path = "/findByCfamilia")
     public Iterable<Familia> findByCfamilia(@RequestParam(value="cfamilia", required=false, defaultValue="0") String cfamilia, Model model) {
-        logger.debug("Buscando marca por cfamilia...");
+        logger.debug("Buscando familia por cfamilia...");
         return service.findByCfamilia(cfamilia);
     }
+	
+	@GetMapping(path = "/findByName")
+    public Iterable<Familia> findByName(@RequestParam(value="name", required=false, defaultValue="0") String name, Model model) {
+        logger.debug("Buscando familia por name...");
+        return service.findByName(name);
+    }
+	
+	@GetMapping(path = "/findPromocionesById")
+    public Iterable<Promocion> findPromocionesById(@RequestParam(value="id", required=false, defaultValue="0") Long id, Model model) {
+        logger.debug("Buscando promociones por id...");
+        return service.findPromocionesById(id);
+    }	
 	
 	@GetMapping(path = "/findPromocionesByCfamilia")
     public Iterable<Promocion> findPromocionesByCfamilia(@RequestParam(value="cfamilia", required=false, defaultValue="0") String cfamilia, Model model) {
@@ -40,8 +60,8 @@ public class FamiliaController {
     }	
 		
     @PostMapping(path = "/save")
-    public ResponseEntity<Familia> save(@RequestBody Familia marca) {
-    	Familia savedProduct = this.service.save(marca);
+    public ResponseEntity<Familia> save(@RequestBody Familia familia) {
+    	Familia savedProduct = this.service.save(familia);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 }

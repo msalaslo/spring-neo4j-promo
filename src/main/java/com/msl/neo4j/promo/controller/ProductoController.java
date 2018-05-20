@@ -30,26 +30,32 @@ public class ProductoController {
 	ProductoService service;
 	
 	@GetMapping(path = "/findByid")
-    public Optional<Producto> findByid(@RequestParam(value="id", required=false, defaultValue="0") String id, Model model) {
-        logger.debug("Buscando producto por id...");
+    public Optional<Producto> findByid(@RequestParam(value="id", required=false, defaultValue="0") Long id, Model model) {
+        logger.debug("Buscando producto por id..." + id);
         return service.findByid(id);
     }
 	
 	@GetMapping(path = "/findByReferencia")
     public Iterable<Producto> findByReferencia(@RequestParam(value="referencia", required=false, defaultValue="0") String referencia, Model model) {
-        logger.debug("Buscando producto por codpromoci...");
+        logger.debug("Buscando producto por referencia..." + referencia);
         return service.findByReferencia(referencia);
     }
 	
+	@GetMapping(path = "/findByName")
+    public Producto findByName(@RequestParam(value="name", required=false, defaultValue="0") String name, Model model) {
+        logger.debug("Buscando producto por name..." + name);
+        return service.findByName(name);
+    }
+	
 	@GetMapping(path = "/findPromocionesById")
-    public Iterable<Promocion> findPromocionesById(@RequestParam(value="id", required=false, defaultValue="0") String id, Model model) {
-        logger.debug("Buscando promociones por id...");
+    public Iterable<Promocion> findPromocionesById(@RequestParam(value="id", required=false, defaultValue="0") Long id, Model model) {
+        logger.debug("Buscando promociones por id..." + id);
         return service.findPromocionesById(id);
     }	
 	
 	@GetMapping(path = "/findPromocionesByReferencia")
     public Iterable<Promocion> findPromocionesByReferencia(@RequestParam(value="referencia", required=false, defaultValue="0") String referencia, Model model) {
-        logger.debug("Buscando promociones por referencia...");
+        logger.debug("Buscando promociones por referencia..." + referencia);
         return service.findPromocionesByReferencia(referencia);
     }	
 	
@@ -72,8 +78,8 @@ public class ProductoController {
     }
 	
 	@GetMapping(path = "/findAllPromocionesById")
-    public Optional<Producto> findAllPromocionesById(@RequestParam(value="id", required=false, defaultValue="0") String id, Model model) {
-        logger.debug("Buscando TODAS promociones por id...");
-        return service.findByid(id);
+    public Iterable<Promocion> findAllPromocionesById(@RequestParam(value="id", required=false, defaultValue="0") Long id, Model model) {
+        logger.debug("Buscando TODAS promociones por id..." + id);
+        return service.findAllPromocionesById(id);
     }	
 }
