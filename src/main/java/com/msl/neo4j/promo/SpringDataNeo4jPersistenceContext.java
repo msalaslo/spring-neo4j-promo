@@ -14,20 +14,21 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableNeo4jRepositories("com.msl.neo4j.promo.repository")
 public class SpringDataNeo4jPersistenceContext {
 	
-//	  @Bean
-//	  public SessionFactory getSessionFactory() {
-//	    return new SessionFactory(configuration(), "com.msl.neo4j.promo");
-//	  }
-//
-//	  @Bean
-//	  public Neo4jTransactionManager transactionManager() throws Exception {
-//	    return new Neo4jTransactionManager(getSessionFactory());
-//	  }
-//
-//	  @Bean
-//	  public org.neo4j.ogm.config.Configuration configuration() {
-//	    return new org.neo4j.ogm.config.Configuration.Builder()
-//	      .uri("bolt://localhost")
-//	      .build();
-//	  }
+	  @Bean
+	  public SessionFactory sessionFactory() {
+	    return new SessionFactory(configuration(), "com.msl.neo4j.promo");
+	  }
+
+	  @Bean
+	  public Neo4jTransactionManager transactionManager() throws Exception {
+	    return new Neo4jTransactionManager(sessionFactory());
+	  }
+
+	  @Bean
+	  public org.neo4j.ogm.config.Configuration configuration() {
+	    return new org.neo4j.ogm.config.Configuration.Builder()
+	      .uri("bolt://localhost")
+	      .credentials("neo4j", "promo")
+	      .build();
+	  }
 }
