@@ -2,6 +2,7 @@ package com.msl.neo4j.promo.repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
@@ -24,4 +25,6 @@ public interface ProductoRepository extends Neo4jRepository<Producto,Long> {
 			+ "[ (n)-[r_p1:`PROMOTED`]->(p1:`promocion`) | [ r_p1, p1 ] ], "
 			+ "[ (n)-[r_f1:`FAMILIA`]->(f1:`familia`) | [ r_f1, f1 ] ] ], ID(n)")
 	Iterable<Promocion> findAllPromocionesById(@Param("id") Long value);
+	@Query("MATCH (n:`producto`) RETURN v")
+	public Stream<Producto> findAllAsStream();
 }
