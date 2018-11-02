@@ -24,7 +24,7 @@ public interface ProductoRepository extends Neo4jRepository<Producto,Long> {
 			+ "[ (n)-[r_c1:`CENTRO`]->(c1:`centro`) | [ r_c1, c1 ] ], "
 			+ "[ (n)-[r_p1:`PROMOTED`]->(p1:`promocion`) | [ r_p1, p1 ] ], "
 			+ "[ (n)-[r_f1:`FAMILIA`]->(f1:`familia`) | [ r_f1, f1 ] ] ], ID(n)")
-	Iterable<Promocion> findAllPromocionesById(@Param("id") Long value);
+	Iterable<Promocion> findAllPromocionesById(@Param("referencia_0") String value);
 	@Query("MATCH (n:`producto`) RETURN v")
 	public Stream<Producto> findAllAsStream();
 }

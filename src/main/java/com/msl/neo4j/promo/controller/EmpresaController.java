@@ -54,7 +54,7 @@ public class EmpresaController {
     }	
 	
 	@GetMapping(path = "/findPromocionesByCempresa")
-    public Iterable<Promocion> findPromocionesByCempresa(@RequestParam(value="cempresa", required=false, defaultValue="0") String cempresa, Model model) {
+    public Iterable<Empresa> findPromocionesByCempresa(@RequestParam(value="cempresa", required=false, defaultValue="0") String cempresa, Model model) {
         logger.debug("Buscando promociones por cempresa...");
         return service.findPromocionesByCempresa(cempresa);
     }	

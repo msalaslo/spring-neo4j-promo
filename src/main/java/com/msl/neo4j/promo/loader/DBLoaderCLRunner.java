@@ -58,15 +58,15 @@ public class DBLoaderCLRunner implements CommandLineRunner {
 	
 	@Override
 	public void run(final String... args) throws Exception {
-		IRepositoryLoader[] loaders = {empresaLoader, centroLoader, familiaLoader, marcaLoader, productoLoader, promocionLoader};
-		IRelacionableRepositoryLoader[] relacionableLoaders = {centroEmpresaLoader, productoCentroLoader, productoMarcaLoader, productoFamiliaLoader};
-		IPromocionableRepositoryLoader[] promocionLoaders = {empresaPromocionLoader, centroPromocionLoader, marcaPromocionLoader, familiaPromocionLoader, productoPromocionLoader};
-		deleteRepositories(loaders);
-		deletePromociones(promocionLoaders);
-		deleteRelaciones(relacionableLoaders);
-		loadRepositories(loaders);		
-		loadPromociones(promocionLoaders);
-		loadRelaciones(relacionableLoaders);
+//		IRepositoryLoader[] loaders = {empresaLoader, centroLoader, familiaLoader, marcaLoader, productoLoader, promocionLoader};
+//		IRelacionableRepositoryLoader[] relacionableLoaders = {centroEmpresaLoader, productoCentroLoader, productoMarcaLoader, productoFamiliaLoader};
+//		IPromocionableRepositoryLoader[] promocionLoaders = {empresaPromocionLoader, centroPromocionLoader, marcaPromocionLoader, familiaPromocionLoader, productoPromocionLoader};
+//		deleteRepositories(loaders);
+//		deletePromociones(promocionLoaders);
+//		deleteRelaciones(relacionableLoaders);
+//		loadRepositories(loaders);		
+//		loadPromociones(promocionLoaders);
+//		loadRelaciones(relacionableLoaders);
 	}
 	
 	private void deleteRepositories(IRepositoryLoader[] loaders) {

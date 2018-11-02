@@ -50,7 +50,7 @@ public class ProductoService {
 		loader.add(numProductos);
 	}
 	
-	public Iterable<Promocion> findAllPromocionesById(Long id){
+	public Iterable<Promocion> findAllPromocionesById(String id){
 		return repository.findAllPromocionesById(id);
 	}
 	

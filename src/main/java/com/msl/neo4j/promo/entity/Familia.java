@@ -17,7 +17,7 @@ public class Familia implements Promocionable, RelacionableParent{
 	@Index
 	public String cfamilia;
 	
-	@Relationship(type = "PROMOTED")
+	@Relationship(type = "PROMOTED", direction=Relationship.OUTGOING)
 	public List<Promocion> promociones;
 	
 	public String name;

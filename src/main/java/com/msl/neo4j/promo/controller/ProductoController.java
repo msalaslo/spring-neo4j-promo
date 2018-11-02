@@ -78,7 +78,7 @@ public class ProductoController {
     }
 	
 	@GetMapping(path = "/findAllPromocionesById")
-    public Iterable<Promocion> findAllPromocionesById(@RequestParam(value="id", required=false, defaultValue="0") Long id, Model model) {
+    public Iterable<Promocion> findAllPromocionesById(@RequestParam(value="id", required=false, defaultValue="0") String id, Model model) {
         logger.debug("Buscando TODAS promociones por id..." + id);
         return service.findAllPromocionesById(id);
     }	

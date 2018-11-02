@@ -31,7 +31,7 @@ public class EmpresaService {
     	return repository.findPromocionesById(id);
     }
     
-    public Iterable<Promocion> findPromocionesByCempresa(String cempresa){
+    public Iterable<Empresa> findPromocionesByCempresa(String cempresa){
     	return repository.findPromocionesByCempresa(cempresa);
     }
     

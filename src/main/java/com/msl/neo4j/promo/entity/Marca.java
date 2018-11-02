@@ -19,7 +19,7 @@ public class Marca implements Promocionable, Relacionable, RelacionableParent{
 	private String cmarmuma;
 				
 //	@Relations(edges = MarcaPromocion.class, lazy = true)
-	@Relationship(type = "PROMOTED")
+	@Relationship(type = "PROMOTED", direction=Relationship.OUTGOING)
 	public List<Promocion> promociones;
 	
 	private String name; 
