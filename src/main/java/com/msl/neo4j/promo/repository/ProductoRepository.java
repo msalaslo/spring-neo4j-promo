@@ -19,12 +19,10 @@ public interface ProductoRepository extends Neo4jRepository<Producto,Long> {
 	Iterable<Promocion> findPromocionesById(Long id);
 	Iterable<Promocion> findPromocionesByName(String name);
 	Iterable<Promocion> findPromocionesByReferencia(String referencia);
-	@Query("MATCH (n:`producto`) WHERE n.`referencia` = { `referencia_0` } WITH n RETURN n,"
-			+ "[ [ (n)-[r_m1:`MARCA`]->(m1:`marca`) | [ r_m1, m1 ] ], "
-			+ "[ (n)-[r_c1:`CENTRO`]->(c1:`centro`) | [ r_c1, c1 ] ], "
-			+ "[ (n)-[r_p1:`PROMOTED`]->(p1:`promocion`) | [ r_p1, p1 ] ], "
-			+ "[ (n)-[r_f1:`FAMILIA`]->(f1:`familia`) | [ r_f1, f1 ] ] ], ID(n)")
-	Iterable<Promocion> findAllPromocionesById(@Param("referencia_0") String value);
-	@Query("MATCH (n:`producto`) RETURN v")
+
+	@Query("MATCH (n:producto {referencia={0}})-[PROMOTED*1..10]-> (p:promocion) RETURN p")
+	Iterable<Promocion> findAllPromocionesById(String ref);
+	
+	@Query("MATCH (n:`producto`) RETURN n")
 	public Stream<Producto> findAllAsStream();
 }
